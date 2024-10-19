@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "destination": "Manaus",
+    "destination_state_code": "AM",
+    "delivery_time": 4,
+    "order_weight": 200
+  },
+  {
+    "id": 2,
+    "destination": "Belo Horizonte",
+    "destination_state_code": "MG",
+    "delivery_time": 4,
+    "order_weight": 200
+  },
+  {
+    "id": 3,
+    "destination": "Salvador",
+    "destination_state_code": "BA",
+    "delivery_time": 4,
+    "order_weight": 200
+  },
+  {
+    "id": 4,
+    "destination": "Campo Grande",
+    "destination_state_code": "MS",
+    "delivery_time": 4,
+    "order_weight": 200
+  },
+  {
+    "id": 5,
+    "destination": "Porto Alegre",
+    "destination_state_code": "RS",
+    "delivery_time": 4,
+    "order_weight": 200
+  },
+  {
+    "id": 6,
+    "destination": "Brasília",
+    "destination_state_code": "DF",
+    "delivery_time": 4,
+    "order_weight": 200
+  }
+]

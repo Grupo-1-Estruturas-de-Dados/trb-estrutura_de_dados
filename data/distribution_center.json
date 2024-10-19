@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "cd_name": "Belém",
+    "state_code": "PA"
+  },
+  {
+    "id": 2,
+    "cd_name": "Recife",
+    "state_code": "PE"
+  },
+  {
+    "id": 3,
+    "cd_name": "São Paulo",
+    "state_code": "SP"
+  },
+  {
+    "id": 4,
+    "cd_name": "Curitiba",
+    "state_code": "PR"
+  }
+]
