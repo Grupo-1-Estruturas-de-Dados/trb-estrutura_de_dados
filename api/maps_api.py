@@ -1,14 +1,20 @@
 import requests
+import os
 from requests.exceptions import HTTPError
-
-API_KEY = 'xx'
+from dotenv import load_dotenv
 
 def get_route_distance(origin, destination):
+  # Carregar as variáveis do arquivo .env
+  load_dotenv()
+
+  # Obter a chave de API
+  api_key = os.getenv('GOOGLE_API_URL')
+
   url = "https://maps.googleapis.com/maps/api/directions/json"
   params = {
     'origin': origin,
     'destination': destination,
-    'key': API_KEY
+    'key': api_key
   }
 
   try:
