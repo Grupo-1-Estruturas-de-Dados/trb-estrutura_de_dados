@@ -1,0 +1,20 @@
+[
+    {
+        "distribution_center_id": 2,
+        "distribution_center": "Recife",
+        "distance_km": 3057,
+        "duration_seconds": 149065
+    },
+    {
+        "distribution_center_id": 3,
+        "distribution_center": "Sao Paulo",
+        "distance_km": 402,
+        "duration_seconds": 20069
+    },
+    {
+        "distribution_center_id": 4,
+        "distribution_center": "Curitiba",
+        "distance_km": 1,
+        "duration_seconds": 0
+    }
+]

@@ -25,55 +25,73 @@ def add_data_json(path, data):
 
 
 # Definindo rota mais próxima para para cada entrega
-def get_closest_route():
-  print('\nDEFININDO ROTAS MAIS PRÓXIMAS...\n')
+def define_closest_route(routes_dict):
+  closest_distance = {}
+  tste = []
+  for index, item in enumerate(routes_dict):
 
-  existing_routes = get_json_data(ALL_ROUTES_PATH)
+    if index == 0:
+      closest_distance = item
+      continue
+    
+    if (item['distance_km'] < closest_distance['distance_km']):
+      closest_distance = item
+    
+    tste.append(closest_distance)
 
-  for route in existing_routes.values():
-    print(route)
+  add_data_json(CLOSEST_ROUTES, tste)
 
 
 # Calcular rota mais proxima entre o CD e o local de entrega do pedido
 def calculate_distance():
   print('\nCALCULANDO DISTÂNCIAS...\n')
-  
+
   distribution_centers = get_json_data(CD_PATH)
   orders = get_json_data(ORDER_PATH)
   existing_routes = get_json_data(ALL_ROUTES_PATH)
 
   routes_list = []
+  order_id_counter = 1
 
   for order in orders.values():
-    destination = f'{order.get("destination")}, { order.get("destination_state_code")}'
+    destination = f'{order.get("destination")}, {order.get("destination_state_code")}'
     
-    for cd in distribution_centers.values():
-      origin = f'{cd.get("cd_name")}, { cd.get("state_code")}'
+    # Cria um dicionário para a rota do pedido
+    routes_dict = {
+      "id": order_id_counter,
+      "order_id": order.get("id"),
+      "destination": order.get("destination"),
+      "routes": []
+    }
 
-      # Verifica se a distancia da rota ja foi calculada, para economizar na chamada da api
-      if any(route for route in existing_routes.values() if 
-        int(route['order_id']) == int(order.get("id")) and 
-        int(route['distribution_center_id']) == int(cd.get("id"))):
-        print(f"Rota já existe para o pedido {order.get('id')} e centro de distribuição {cd.get('cd_name')}...")
-        continue
+    for cd in distribution_centers.values():
+      origin = f'{cd.get("cd_name")}, {cd.get("state_code")}'
+
+      # Verifica se a distância da rota já foi calculada
+      for route in existing_routes.values():
+        for r in route['routes']:
+          if int(route.get('order_id') == int(order.get("id"))):
+            if int(r['distribution_center_id']) == int(cd.get("id")):
+              continue
 
       distance, duration = get_route_distance(origin, destination)
-      
-      route_id = f"{order.get('id')}_{cd.get('cd_name')}"
-      routes_dict = {
-        "id": route_id,
-        "order_id": order.get("id"),
-        "destination": order.get("destination"),
+
+      route = {
         "distribution_center_id": cd.get("id"),
         "distribution_center": cd.get("cd_name"),
         "distance_km": distance,
         "duration_seconds": duration
       }
 
-      routes_list.append(routes_dict)
-      add_data_json(ALL_ROUTES_PATH, routes_list)
-  
-  get_closest_route()
+      # Adiciona a rota ao dicionário de rotas do pedido
+      routes_dict["routes"].append(route)
+    
+    # Adiciona o dicionário de rotas à lista de rotas
+    routes_list.append(routes_dict)
+    define_closest_route(routes_dict["routes"])
+    order_id_counter += 1 
+
+  add_data_json(ALL_ROUTES_PATH, routes_list)     
 
 
 def main():
