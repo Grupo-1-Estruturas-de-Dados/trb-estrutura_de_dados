@@ -23,8 +23,9 @@ def get_route_distance(origin, destination):
 
     if data['routes']:
       distance = data['routes'][0]['legs'][0]['distance']['text'].split()[0]
+      distance = distance.replace(',', '')
       duration = data['routes'][0]['legs'][0]['duration']['value']
-      return distance, duration
+      return int(distance), duration
     else:
         print('Não foi possível encontrar uma rota.')
   except HTTPError as http_err:

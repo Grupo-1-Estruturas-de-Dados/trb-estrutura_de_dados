@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "cd_name": "Belém",
+    "cd_name": "Belem",
     "state_code": "PA"
   },
   {
@@ -11,7 +11,7 @@
   },
   {
     "id": 3,
-    "cd_name": "São Paulo",
+    "cd_name": "Sao Paulo",
     "state_code": "SP"
   },
   {

@@ -65,6 +65,7 @@ GOOGLE_API_URL=xx
 ```
 ORDER_PATH='substituir para caminho para o arquivo order.json dentro da pasta Data'
 CD_PATH='substituir caminho para o arquivo distribution_center.json dentro da pasta Data'
+ALL_ROUTES_PATH='substituir caminho para o arquivo all_routes.json dentro da pasta Data'
 ```
 
-**Nota:** A GOOGLE_API_URL precisa ser obtida com **Guilherme Del Rio** e substituída no campo indicado. Os caminhos de ORDER_PATH e CD_PATH devem ser ajustados conforme o local onde os arquivos order.json e distribution_center.json estão na pasta Data.
+**Nota:** A GOOGLE_API_URL precisa ser obtida com **Guilherme Del Rio** e substituída no campo indicado. Os caminhos de xxx_PATH devem ser ajustados conforme o local onde os arquivos order.json e distribution_center.json estão na pasta Data.
