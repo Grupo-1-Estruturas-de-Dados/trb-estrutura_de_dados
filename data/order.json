@@ -40,5 +40,138 @@
     "destination_state_code": "DF",
     "delivery_time": 4,
     "order_weight": 200
+  },
+  {
+    "id": 7,
+    "destination": "Fortaleza",
+    "destination_state_code": "CE",
+    "delivery_time": 3,
+    "order_weight": 300
+  },
+  {
+    "id": 8,
+    "destination": "Vitória",
+    "destination_state_code": "ES",
+    "delivery_time": 2,
+    "order_weight": 150
+  },
+  {
+    "id": 9,
+    "destination": "Florianópolis",
+    "destination_state_code": "SC",
+    "delivery_time": 5,
+    "order_weight": 250
+  },
+  {
+    "id": 10,
+    "destination": "João Pessoa",
+    "destination_state_code": "PB",
+    "delivery_time": 4,
+    "order_weight": 100
+  },
+  {
+    "id": 11,
+    "destination": "Maceió",
+    "destination_state_code": "AL",
+    "delivery_time": 3,
+    "order_weight": 180
+  },
+  {
+    "id": 12,
+    "destination": "Aracaju",
+    "destination_state_code": "SE",
+    "delivery_time": 3,
+    "order_weight": 220
+  },
+  {
+    "id": 13,
+    "destination": "Natal",
+    "destination_state_code": "RN",
+    "delivery_time": 3,
+    "order_weight": 140
+  },
+  {
+    "id": 14,
+    "destination": "Cuiabá",
+    "destination_state_code": "MT",
+    "delivery_time": 6,
+    "order_weight": 300
+  },
+  {
+    "id": 15,
+    "destination": "São Luís",
+    "destination_state_code": "MA",
+    "delivery_time": 4,
+    "order_weight": 270
+  },
+  {
+    "id": 16,
+    "destination": "Teresina",
+    "destination_state_code": "PI",
+    "delivery_time": 3,
+    "order_weight": 190
+  },
+  {
+    "id": 17,
+    "destination": "Goiânia",
+    "destination_state_code": "GO",
+    "delivery_time": 2,
+    "order_weight": 260
+  },
+  {
+    "id": 18,
+    "destination": "Belém",
+    "destination_state_code": "PA",
+    "delivery_time": 5,
+    "order_weight": 250
+  },
+  {
+    "id": 19,
+    "destination": "Rio Branco",
+    "destination_state_code": "AC",
+    "delivery_time": 7,
+    "order_weight": 200
+  },
+  {
+    "id": 20,
+    "destination": "Macapá",
+    "destination_state_code": "AP",
+    "delivery_time": 7,
+    "order_weight": 220
+  },
+  {
+    "id": 21,
+    "destination": "Boa Vista",
+    "destination_state_code": "RR",
+    "delivery_time": 8,
+    "order_weight": 150
+  },
+  {
+    "id": 22,
+    "destination": "Palmas",
+    "destination_state_code": "TO",
+    "delivery_time": 5,
+    "order_weight": 210
+  },
+  {
+    "id": 23,
+    "destination": "São Paulo",
+    "destination_state_code": "SP",
+    "delivery_time": 1,
+    "order_weight": 500
+  },
+  {
+    "id": 24,
+    "destination": "Rio de Janeiro",
+    "destination_state_code": "RJ",
+    "delivery_time": 1,
+    "order_weight": 450
+  },
+  {
+    "id": 25,
+    "destination": "Curitiba",
+    "destination_state_code": "PR",
+    "delivery_time": 2,
+    "order_weight": 350
   }
 ]

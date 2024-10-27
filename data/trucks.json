@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "max_capacity_weight": 200,
+    "max_operation_hour": 24,
+    "cost_per_hour": 80
+  },
+  {
+    "id": 2,
+    "max_capacity_weight": 200,
+    "max_operation_hour": 24,
+    "cost_per_hour": 80
+  },
+  {
+    "id": 3,
+    "max_capacity_weight": 200,
+    "max_operation_hour": 24,
+    "cost_per_hour": 80
+  },
+  {
+    "id": 4,
+    "max_capacity_weight": 200,
+    "max_operation_hour": 24,
+    "cost_per_hour": 80
+  },
+  {
+    "id": 5,
+    "max_capacity_weight": 200,
+    "max_operation_hour": 24,
+    "cost_per_hour": 80
+  },
+  {
+    "id": 6,
+    "max_capacity_weight": 250,
+    "max_operation_hour": 20,
+    "cost_per_hour": 100
+  },
+  {
+    "id": 7,
+    "max_capacity_weight": 300,
+    "max_operation_hour": 30,
+    "cost_per_hour": 120
+  },
+  {
+    "id": 8,
+    "max_capacity_weight": 180,
+    "max_operation_hour": 25,
+    "cost_per_hour": 90
+  },
+  {
+    "id": 9,
+    "max_capacity_weight": 400,
+    "max_operation_hour": 15,
+    "cost_per_hour": 150
+  },
+  {
+    "id": 10,
+    "max_capacity_weight": 500,
+    "max_operation_hour": 12,
+    "cost_per_hour": 200
+  },
+  {
+    "id": 11,
+    "max_capacity_weight": 150,
+    "max_operation_hour": 40,
+    "cost_per_hour": 70
+  },
+  {
+    "id": 12,
+    "max_capacity_weight": 220,
+    "max_operation_hour": 28,
+    "cost_per_hour": 95
+  },
+  {
+    "id": 13,
+    "max_capacity_weight": 320,
+    "max_operation_hour": 18,
+    "cost_per_hour": 110
+  },
+  {
+    "id": 14,
+    "max_capacity_weight": 275,
+    "max_operation_hour": 22,
+    "cost_per_hour": 105
+  },
+  {
+    "id": 15,
+    "max_capacity_weight": 350,
+    "max_operation_hour": 16,
+    "cost_per_hour": 130
+  },
+  {
+    "id": 16,
+    "max_capacity_weight": 450,
+    "max_operation_hour": 10,
+    "cost_per_hour": 180
+  },
+  {
+    "id": 17,
+    "max_capacity_weight": 200,
+    "max_operation_hour": 30,
+    "cost_per_hour": 85
+  },
+  {
+    "id": 18,
+    "max_capacity_weight": 280,
+    "max_operation_hour": 24,
+    "cost_per_hour": 100
+  },
+  {
+    "id": 19,
+    "max_capacity_weight": 310,
+    "max_operation_hour": 27,
+    "cost_per_hour": 115
+  },
+  {
+    "id": 20,
+    "max_capacity_weight": 150,
+    "max_operation_hour": 35,
+    "cost_per_hour": 75
+  }
+]
