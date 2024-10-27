@@ -1,8 +1,7 @@
 import json
+import os
 from api import get_route_distance
-
-ORDER_PATH = '/home/guilhermedelrio/Workspace/trb-estrutura_de_dados/data/order.json'
-CD_PATH = '/home/guilhermedelrio/Workspace/trb-estrutura_de_dados/data/distribution_center.json'
+from dotenv import load_dotenv
 
 # Função para ler o arquivo json e converter em um dicionário
 def get_json_data(path):
@@ -61,4 +60,7 @@ def main():
 
 
 if __name__ == "__main__":
+  load_dotenv()
+  CD_PATH = os.getenv('ORDER_PATH')
+  ORDER_PATH = os.getenv('CD_PATH')
   main()
