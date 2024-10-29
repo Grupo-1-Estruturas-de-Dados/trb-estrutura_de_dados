@@ -34,6 +34,8 @@ def add_data_json(path, data):
 
 # Definindo rota mais próxima para para cada entrega
 def define_closest_distance():
+  print('\nCALCULANDO ROTA MAIS PROXIMA DE ENTREGA...\n')
+  
   existing_routes = get_json_data(ALL_ROUTES_PATH)
   result = []
   for item in existing_routes.values():
@@ -44,7 +46,8 @@ def define_closest_distance():
       "destination": item["destination"],
       "routes": [min_route]
     })
-  return result
+  
+  add_data_json(CLOSEST_ROUTES, result)
 
 
 # Calcular rota mais proxima entre o CD e o local de entrega do pedido
@@ -106,10 +109,6 @@ def calculate_distance():
   # Salva os dados de rotas atualizados sem sobrescrever o arquivo original
   add_data_json(ALL_ROUTES_PATH, routes_list)
 
-  # Definindo a menor rota por entrega-cd
-  closest_route_list = define_closest_distance()
-  add_data_json(CLOSEST_ROUTES, closest_route_list)
-
 
 def main():
   start_time = time.time()
@@ -117,7 +116,11 @@ def main():
   print(f'INICIANDO ALGORITMO')
   print('*' * 20)
 
+  # Calcular rota mais proxima entre o CD e o local de entrega do pedido
   calculate_distance()
+
+  # Definindo a menor rota por entrega-cd
+  define_closest_distance()
 
   end_time = time.time()
   execution_time = (end_time - start_time) / 60
