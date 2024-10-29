@@ -20,7 +20,7 @@
                 "distribution_center_id": 3,
                 "distribution_center": "Sao Paulo",
                 "distance_km": 3880,
-                "duration_seconds": 193864
+                "duration_seconds": 193900
             },
             {
                 "distribution_center_id": 4,
@@ -101,13 +101,13 @@
                 "distribution_center_id": 1,
                 "distribution_center": "Belem",
                 "distance_km": 2859,
-                "duration_seconds": 135097
+                "duration_seconds": 135211
             },
             {
                 "distribution_center_id": 2,
                 "distribution_center": "Recife",
                 "distance_km": 3161,
-                "duration_seconds": 147845
+                "duration_seconds": 147959
             },
             {
                 "distribution_center_id": 3,
@@ -380,7 +380,7 @@
                 "distribution_center_id": 1,
                 "distribution_center": "Belem",
                 "distance_km": 2021,
-                "duration_seconds": 105616
+                "duration_seconds": 105617
             },
             {
                 "distribution_center_id": 2,
@@ -423,7 +423,7 @@
                 "distribution_center_id": 3,
                 "distribution_center": "Sao Paulo",
                 "distance_km": 1531,
-                "duration_seconds": 72010
+                "duration_seconds": 72046
             },
             {
                 "distribution_center_id": 4,
@@ -578,7 +578,7 @@
                 "distribution_center_id": 3,
                 "distribution_center": "Sao Paulo",
                 "distance_km": 3497,
-                "duration_seconds": 163437
+                "duration_seconds": 163473
             },
             {
                 "distribution_center_id": 4,
@@ -640,7 +640,7 @@
                 "distribution_center_id": 3,
                 "distribution_center": "Sao Paulo",
                 "distance_km": 4662,
-                "duration_seconds": 228901
+                "duration_seconds": 228937
             },
             {
                 "distribution_center_id": 4,

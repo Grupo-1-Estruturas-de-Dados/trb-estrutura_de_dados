@@ -1,20 +1,327 @@
 [
     {
-        "distribution_center_id": 2,
-        "distribution_center": "Recife",
-        "distance_km": 3057,
-        "duration_seconds": 149065
+        "id": 1,
+        "order_id": 1,
+        "destination": "Manaus",
+        "routes": [
+            {
+                "distribution_center_id": 1,
+                "distribution_center": "Belem",
+                "distance_km": 2994,
+                "duration_seconds": 179246
+            }
+        ]
     },
     {
-        "distribution_center_id": 3,
-        "distribution_center": "Sao Paulo",
-        "distance_km": 402,
-        "duration_seconds": 20069
+        "id": 2,
+        "order_id": 2,
+        "destination": "Belo Horizonte",
+        "routes": [
+            {
+                "distribution_center_id": 3,
+                "distribution_center": "Sao Paulo",
+                "distance_km": 585,
+                "duration_seconds": 27109
+            }
+        ]
     },
     {
-        "distribution_center_id": 4,
-        "distribution_center": "Curitiba",
-        "distance_km": 1,
-        "duration_seconds": 0
+        "id": 3,
+        "order_id": 3,
+        "destination": "Salvador",
+        "routes": [
+            {
+                "distribution_center_id": 2,
+                "distribution_center": "Recife",
+                "distance_km": 807,
+                "duration_seconds": 40244
+            }
+        ]
+    },
+    {
+        "id": 4,
+        "order_id": 4,
+        "destination": "Campo Grande",
+        "routes": [
+            {
+                "distribution_center_id": 4,
+                "distribution_center": "Curitiba",
+                "distance_km": 974,
+                "duration_seconds": 44062
+            }
+        ]
+    },
+    {
+        "id": 5,
+        "order_id": 5,
+        "destination": "Porto Alegre",
+        "routes": [
+            {
+                "distribution_center_id": 4,
+                "distribution_center": "Curitiba",
+                "distance_km": 741,
+                "duration_seconds": 32446
+            }
+        ]
+    },
+    {
+        "id": 6,
+        "order_id": 6,
+        "destination": "Bras\u00edlia",
+        "routes": [
+            {
+                "distribution_center_id": 3,
+                "distribution_center": "Sao Paulo",
+                "distance_km": 1005,
+                "duration_seconds": 44051
+            }
+        ]
+    },
+    {
+        "id": 7,
+        "order_id": 7,
+        "destination": "Fortaleza",
+        "routes": [
+            {
+                "distribution_center_id": 2,
+                "distribution_center": "Recife",
+                "distance_km": 777,
+                "duration_seconds": 38618
+            }
+        ]
+    },
+    {
+        "id": 8,
+        "order_id": 8,
+        "destination": "Vit\u00f3ria",
+        "routes": [
+            {
+                "distribution_center_id": 3,
+                "distribution_center": "Sao Paulo",
+                "distance_km": 954,
+                "duration_seconds": 46167
+            }
+        ]
+    },
+    {
+        "id": 9,
+        "order_id": 9,
+        "destination": "Florian\u00f3polis",
+        "routes": [
+            {
+                "distribution_center_id": 4,
+                "distribution_center": "Curitiba",
+                "distance_km": 307,
+                "duration_seconds": 14741
+            }
+        ]
+    },
+    {
+        "id": 10,
+        "order_id": 10,
+        "destination": "Jo\u00e3o Pessoa",
+        "routes": [
+            {
+                "distribution_center_id": 2,
+                "distribution_center": "Recife",
+                "distance_km": 116,
+                "duration_seconds": 7334
+            }
+        ]
+    },
+    {
+        "id": 11,
+        "order_id": 11,
+        "destination": "Macei\u00f3",
+        "routes": [
+            {
+                "distribution_center_id": 2,
+                "distribution_center": "Recife",
+                "distance_km": 257,
+                "duration_seconds": 13806
+            }
+        ]
+    },
+    {
+        "id": 12,
+        "order_id": 12,
+        "destination": "Aracaju",
+        "routes": [
+            {
+                "distribution_center_id": 2,
+                "distribution_center": "Recife",
+                "distance_km": 500,
+                "duration_seconds": 25516
+            }
+        ]
+    },
+    {
+        "id": 13,
+        "order_id": 13,
+        "destination": "Natal",
+        "routes": [
+            {
+                "distribution_center_id": 2,
+                "distribution_center": "Recife",
+                "distance_km": 287,
+                "duration_seconds": 15234
+            }
+        ]
+    },
+    {
+        "id": 14,
+        "order_id": 14,
+        "destination": "Cuiab\u00e1",
+        "routes": [
+            {
+                "distribution_center_id": 3,
+                "distribution_center": "Sao Paulo",
+                "distance_km": 1531,
+                "duration_seconds": 72046
+            }
+        ]
+    },
+    {
+        "id": 15,
+        "order_id": 15,
+        "destination": "S\u00e3o Lu\u00eds",
+        "routes": [
+            {
+                "distribution_center_id": 1,
+                "distribution_center": "Belem",
+                "distance_km": 576,
+                "duration_seconds": 38337
+            }
+        ]
+    },
+    {
+        "id": 16,
+        "order_id": 16,
+        "destination": "Teresina",
+        "routes": [
+            {
+                "distribution_center_id": 1,
+                "distribution_center": "Belem",
+                "distance_km": 909,
+                "duration_seconds": 51068
+            }
+        ]
+    },
+    {
+        "id": 17,
+        "order_id": 17,
+        "destination": "Goi\u00e2nia",
+        "routes": [
+            {
+                "distribution_center_id": 3,
+                "distribution_center": "Sao Paulo",
+                "distance_km": 898,
+                "duration_seconds": 40697
+            }
+        ]
+    },
+    {
+        "id": 18,
+        "order_id": 18,
+        "destination": "Bel\u00e9m",
+        "routes": [
+            {
+                "distribution_center_id": 1,
+                "distribution_center": "Belem",
+                "distance_km": 1,
+                "duration_seconds": 0
+            }
+        ]
+    },
+    {
+        "id": 19,
+        "order_id": 19,
+        "destination": "Rio Branco",
+        "routes": [
+            {
+                "distribution_center_id": 1,
+                "distribution_center": "Belem",
+                "distance_km": 3010,
+                "duration_seconds": 166263
+            }
+        ]
+    },
+    {
+        "id": 20,
+        "order_id": 20,
+        "destination": "Macap\u00e1",
+        "routes": [
+            {
+                "distribution_center_id": 1,
+                "distribution_center": "Belem",
+                "distance_km": 528,
+                "duration_seconds": 88567
+            }
+        ]
+    },
+    {
+        "id": 21,
+        "order_id": 21,
+        "destination": "Boa Vista",
+        "routes": [
+            {
+                "distribution_center_id": 1,
+                "distribution_center": "Belem",
+                "distance_km": 3776,
+                "duration_seconds": 214283
+            }
+        ]
+    },
+    {
+        "id": 22,
+        "order_id": 22,
+        "destination": "Palmas",
+        "routes": [
+            {
+                "distribution_center_id": 1,
+                "distribution_center": "Belem",
+                "distance_km": 1207,
+                "duration_seconds": 63006
+            }
+        ]
+    },
+    {
+        "id": 23,
+        "order_id": 23,
+        "destination": "S\u00e3o Paulo",
+        "routes": [
+            {
+                "distribution_center_id": 3,
+                "distribution_center": "Sao Paulo",
+                "distance_km": 1,
+                "duration_seconds": 0
+            }
+        ]
+    },
+    {
+        "id": 24,
+        "order_id": 24,
+        "destination": "Rio de Janeiro",
+        "routes": [
+            {
+                "distribution_center_id": 3,
+                "distribution_center": "Sao Paulo",
+                "distance_km": 554,
+                "duration_seconds": 27604
+            }
+        ]
+    },
+    {
+        "id": 25,
+        "order_id": 25,
+        "destination": "Curitiba",
+        "routes": [
+            {
+                "distribution_center_id": 4,
+                "distribution_center": "Curitiba",
+                "distance_km": 1,
+                "duration_seconds": 0
+            }
+        ]
     }
 ]
