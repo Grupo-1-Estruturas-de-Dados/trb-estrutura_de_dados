@@ -50,7 +50,7 @@ def define_closest_distance():
   add_data_json(CLOSEST_ROUTES, result)
 
 
-# Calcular rota mais proxima entre o CD e o local de entrega do pedido
+# Calcular rotas entre o CD e o local de entrega do pedido
 def calculate_distance():
   print('\nCALCULANDO DISTÂNCIAS...\n')
 
@@ -116,7 +116,7 @@ def main():
   print(f'INICIANDO ALGORITMO')
   print('*' * 20)
 
-  # Calcular rota mais proxima entre o CD e o local de entrega do pedido
+  # Calcular distancias entre cd e pedido
   calculate_distance()
 
   # Definindo a menor rota por entrega-cd
