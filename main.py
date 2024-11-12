@@ -4,136 +4,188 @@ import time
 from api import get_route_distance
 from dotenv import load_dotenv
 
-# Função para ler o arquivo json e converter em um dicionário
+
+
 def get_json_data(path):
-  try:
-    with open(path, 'r') as file:
-      # Checa se o arquivo está vazio
-      if file.readable() and file.seek(0, 2) == 0:
+    try:
+        with open(path, 'r') as file:
+            # Checa se o arquivo está vazio
+            if file.readable() and file.seek(0, 2) == 0:
+                return {}
+
+            file.seek(0)
+            data = json.load(file)
+            return {obj["id"]: obj for obj in data}
+    except FileNotFoundError:
+        print(f'Erro: O arquivo {path} não foi encontrado.')
         return {}
-      
-      file.seek(0)
-      data = json.load(file)
-      return {obj["id"]: obj for obj in data}
-  except FileNotFoundError:
-    print(f'Erro: O arquivo {path} não foi encontrado.')
-    return {}
-  except json.JSONDecodeError:
-    print(f'Erro: O arquivo {path} não é um JSON válido.')
-    return {}
-  except Exception as e:
-    print(f'Ocorreu um erro: {e}')
-    return {}
+    except json.JSONDecodeError:
+        print(f'Erro: O arquivo {path} não é um JSON válido.')
+        return {}
+    except Exception as e:
+        print(f'Ocorreu um erro: {e}')
+        return {}
 
 
-# Funcao para salvar dados no json
+# Função para salvar dados no json
 def add_data_json(path, data):
-  with open(path, 'w') as file:
-    json.dump(data,file, indent=4)
+    with open(path, 'w') as file:
+        json.dump(data, file, indent=4)
 
 
-# Definindo rota mais próxima para para cada entrega
+# Função para carregar dados de caminhões
+def load_trucks_data(path):
+    try:
+        with open(path, 'r') as file:
+            data = json.load(file)
+            return data
+    except FileNotFoundError:
+        print(f'Erro: O arquivo {path} não foi encontrado.')
+        return []
+    except json.JSONDecodeError:
+        print(f'Erro: O arquivo {path} não é um JSON válido.')
+        return []
+    except Exception as e:
+        print(f'Ocorreu um erro: {e}')
+        return []
+
+
+# Função para alocar caminhões para as entregas
+def allocate_trucks(orders, trucks):
+    print('\nALOCANDO CAMINHÕES PARA AS ENTREGAS...\n')
+    allocation = []
+
+    for order in orders.values():
+        order_weight = order.get("weight")
+        allocated = False
+
+        for truck in trucks:
+            if truck["max_capacity_weight"] >= order_weight and truck["max_operation_hour"] >= 1:
+                allocation.append({
+                    "order_id": order["id"],
+                    "truck_id": truck["id"],
+                    "allocated_weight": order_weight,
+                    "cost": truck["cost_per_hour"]
+                })
+                truck["max_operation_hour"] -= 1
+                allocated = True
+                break
+
+        if not allocated:
+            print(
+                f'Pedido {order["id"]} não pôde ser alocado a um caminhão devido a limitações de capacidade ou operação.')
+
+    add_data_json("truck_allocations.json", allocation)
+
+
+# Definindo rota mais próxima para cada entrega
 def define_closest_distance():
-  print('\nCALCULANDO ROTA MAIS PROXIMA DE ENTREGA...\n')
-  
-  existing_routes = get_json_data(ALL_ROUTES_PATH)
-  result = []
-  for item in existing_routes.values():
-    min_route = min(item["routes"], key=lambda x: x["distance_km"])
-    result.append({
-      "id": item["id"],
-      "order_id": item["order_id"],
-      "destination": item["destination"],
-      "routes": [min_route]
-    })
-  
-  add_data_json(CLOSEST_ROUTES, result)
+    print('\nCALCULANDO ROTA MAIS PROXIMA DE ENTREGA...\n')
+
+    existing_routes = get_json_data(ALL_ROUTES_PATH)
+    result = []
+    for item in existing_routes.values():
+        min_route = min(item["routes"], key=lambda x: x["distance_km"])
+        result.append({
+            "id": item["id"],
+            "order_id": item["order_id"],
+            "destination": item["destination"],
+            "routes": [min_route]
+        })
+
+    add_data_json(CLOSEST_ROUTES, result)
 
 
 # Calcular rotas entre o CD e o local de entrega do pedido
 def calculate_distance():
-  print('\nCALCULANDO DISTÂNCIAS...\n')
+    print('\nCALCULANDO DISTÂNCIAS...\n')
 
-  distribution_centers = get_json_data(CD_PATH)
-  orders = get_json_data(ORDER_PATH)
-  existing_routes = get_json_data(ALL_ROUTES_PATH) or {}
+    distribution_centers = get_json_data(CD_PATH)
+    orders = get_json_data(ORDER_PATH)
+    existing_routes = get_json_data(ALL_ROUTES_PATH) or {}
 
-  # Inicializa routes_list com as rotas já existentes
-  routes_list = list(existing_routes.values())
-  closest_route_list = []
-  order_id_counter = 1
+    # Inicializa routes_list com as rotas já existentes
+    routes_list = list(existing_routes.values())
+    order_id_counter = 1
 
-  # Cria um conjunto com as rotas já calculadas para acesso rápido
-  calculated_routes = set(
-    (int(route.get('order_id')), int(r.get('distribution_center_id')))
-    for route in existing_routes.values()
-    for r in route['routes']
-  )
+    # Cria um conjunto com as rotas já calculadas para acesso rápido
+    calculated_routes = set(
+        (int(route.get('order_id')), int(r.get('distribution_center_id')))
+        for route in existing_routes.values()
+        for r in route['routes']
+    )
 
-  for order in orders.values():
-    destination = f'{order.get("destination")}, {order.get("destination_state_code")}'
-    
-    routes_dict = {
-      "id": order_id_counter,
-      "order_id": order.get("id"),
-      "destination": order.get("destination"),
-      "routes": []
-    }
+    for order in orders.values():
+        destination = f'{order.get("destination")}, {order.get("destination_state_code")}'
 
-    for cd in distribution_centers.values():
-      origin = f'{cd.get("cd_name")}, {cd.get("state_code")}'
-        
-      # Verifica se a rota já foi calculada
-      if (int(order.get("id")), int(cd.get("id"))) in calculated_routes:
-        print('Rota já calculada para:', order.get("id"), cd.get("id"))
-        continue  # Pula para o próximo centro de distribuição
+        routes_dict = {
+            "id": order_id_counter,
+            "order_id": order.get("id"),
+            "destination": order.get("destination"),
+            "routes": []
+        }
 
-      # Calcula distância e duração para novas rotas
-      distance, duration = get_route_distance(origin, destination)
+        for cd in distribution_centers.values():
+            origin = f'{cd.get("cd_name")}, {cd.get("state_code")}'
 
-      route = {
-        "distribution_center_id": cd.get("id"),
-        "distribution_center": cd.get("cd_name"),
-        "distance_km": distance,
-        "duration_seconds": duration
-      }
+            # Verifica se a rota já foi calculada
+            if (int(order.get("id")), int(cd.get("id"))) in calculated_routes:
+                print('Rota já calculada para:', order.get("id"), cd.get("id"))
+                continue  # Pula para o próximo centro de distribuição
 
-      routes_dict["routes"].append(route)
+            # Calcula distância e duração para novas rotas
+            distance, duration = get_route_distance(origin, destination)
 
-    # Adiciona o dicionário de rotas ao routes_list se tiver novas rotas
-    if routes_dict["routes"]:
-      routes_list.append(routes_dict)
+            route = {
+                "distribution_center_id": cd.get("id"),
+                "distribution_center": cd.get("cd_name"),
+                "distance_km": distance,
+                "duration_seconds": duration
+            }
 
-    order_id_counter += 1 
+            routes_dict["routes"].append(route)
 
-  # Salva os dados de rotas atualizados sem sobrescrever o arquivo original
-  add_data_json(ALL_ROUTES_PATH, routes_list)
+        # Adiciona o dicionário de rotas ao routes_list se tiver novas rotas
+        if routes_dict["routes"]:
+            routes_list.append(routes_dict)
+
+        order_id_counter += 1
+
+    # Salva os dados de rotas atualizados
+    add_data_json(ALL_ROUTES_PATH, routes_list)
 
 
 def main():
-  start_time = time.time()
-  print('*' * 20)
-  print(f'INICIANDO ALGORITMO')
-  print('*' * 20)
+    start_time = time.time()
+    print('*' * 20)
+    print('INICIANDO ALGORITMO')
+    print('*' * 20)
 
-  # Calcular distancias entre cd e pedido
-  calculate_distance()
+    # Calcular distâncias entre CD e pedido
+    calculate_distance()
 
-  # Definindo a menor rota por entrega-cd
-  define_closest_distance()
+    # Definindo a menor rota por entrega-CD
+    define_closest_distance()
 
-  end_time = time.time()
-  execution_time = (end_time - start_time) / 60
-  print(f"Tempo de execução: {execution_time:.2f} minutos")
+    # Carregando dados de caminhões e pedidos
+    trucks = load_trucks_data("trucks.json")
+    orders = get_json_data(ORDER_PATH)
+
+    # Alocando caminhões para as entregas
+    allocate_trucks(orders, trucks)
+
+    end_time = time.time()
+    execution_time = (end_time - start_time) / 60
+    print(f"Tempo de execução: {execution_time:.2f} minutos")
 
 
 if __name__ == "__main__":
-  load_dotenv()
+    load_dotenv()
 
-  # Lendo base de dados
-  ORDER_PATH = os.getenv('ORDER_PATH')
-  CD_PATH = os.getenv('CD_PATH')
-  ALL_ROUTES_PATH = os.getenv('ALL_ROUTES_PATH')
-  CLOSEST_ROUTES = os.getenv('CLOSEST_ROUTES')
+    # Lendo base de dados
+    ORDER_PATH = os.getenv('ORDER_PATH')
+    CD_PATH = os.getenv('CD_PATH')
+    ALL_ROUTES_PATH = os.getenv('ALL_ROUTES_PATH')
+    CLOSEST_ROUTES = os.getenv('CLOSEST_ROUTES')
 
-  main()
+    main()
