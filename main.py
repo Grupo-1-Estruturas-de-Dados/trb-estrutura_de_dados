@@ -5,7 +5,6 @@ from api import get_route_distance
 from dotenv import load_dotenv
 
 
-
 def get_json_data(path):
     try:
         with open(path, 'r') as file:
@@ -33,33 +32,16 @@ def add_data_json(path, data):
         json.dump(data, file, indent=4)
 
 
-# Função para carregar dados de caminhões
-def load_trucks_data(path):
-    try:
-        with open(path, 'r') as file:
-            data = json.load(file)
-            return data
-    except FileNotFoundError:
-        print(f'Erro: O arquivo {path} não foi encontrado.')
-        return []
-    except json.JSONDecodeError:
-        print(f'Erro: O arquivo {path} não é um JSON válido.')
-        return []
-    except Exception as e:
-        print(f'Ocorreu um erro: {e}')
-        return []
-
-
 # Função para alocar caminhões para as entregas
 def allocate_trucks(orders, trucks):
     print('\nALOCANDO CAMINHÕES PARA AS ENTREGAS...\n')
     allocation = []
 
     for order in orders.values():
-        order_weight = order.get("weight")
+        order_weight = order.get("order_weight")
         allocated = False
 
-        for truck in trucks:
+        for truck in trucks.values():
             if truck["max_capacity_weight"] >= order_weight and truck["max_operation_hour"] >= 1:
                 allocation.append({
                     "order_id": order["id"],
@@ -75,7 +57,7 @@ def allocate_trucks(orders, trucks):
             print(
                 f'Pedido {order["id"]} não pôde ser alocado a um caminhão devido a limitações de capacidade ou operação.')
 
-    add_data_json("truck_allocations.json", allocation)
+    add_data_json(TRUCK_ALLOCATIONS_PATH, allocation)
 
 
 # Definindo rota mais próxima para cada entrega
@@ -130,7 +112,7 @@ def calculate_distance():
 
             # Verifica se a rota já foi calculada
             if (int(order.get("id")), int(cd.get("id"))) in calculated_routes:
-                print('Rota já calculada para:', order.get("id"), cd.get("id"))
+                print(f'Rota já calculada para o pedido {order.get("id")} e CD {cd.get("id")}')
                 continue  # Pula para o próximo centro de distribuição
 
             # Calcula distância e duração para novas rotas
@@ -168,7 +150,7 @@ def main():
     define_closest_distance()
 
     # Carregando dados de caminhões e pedidos
-    trucks = load_trucks_data("trucks.json")
+    trucks = get_json_data(TRUCKS_PATH)
     orders = get_json_data(ORDER_PATH)
 
     # Alocando caminhões para as entregas
@@ -187,5 +169,7 @@ if __name__ == "__main__":
     CD_PATH = os.getenv('CD_PATH')
     ALL_ROUTES_PATH = os.getenv('ALL_ROUTES_PATH')
     CLOSEST_ROUTES = os.getenv('CLOSEST_ROUTES')
+    TRUCKS_PATH = os.getenv('TRUCKS_PATH')
+    TRUCK_ALLOCATIONS_PATH = os.getenv('TRUCK_ALLOCATIONS_PATH')
 
     main()
