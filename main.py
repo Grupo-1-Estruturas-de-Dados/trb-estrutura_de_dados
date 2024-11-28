@@ -4,6 +4,9 @@ import time
 from api import get_route_distance
 from dotenv import load_dotenv
 
+CD_PATH = "path_to_distribution_centers.json"
+ALL_ROUTES_PATH = "path_to_all_routes.json"
+ORDER_PATH = "caminho/para/o/arquivo/order.json"
 
 
 def get_json_data(path):
