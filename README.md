@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/e98bd231-acfb-4bbd-88cf-8114430b9d95)# Trabalho Estrutura de Dados - Grupo 1
+# Trabalho Estrutura de Dados - Grupo 1
 ## Integrantes
 * Bruna Machado Gravina - 1252221676
 * Fabio Cunha de Abreu - 302210481
