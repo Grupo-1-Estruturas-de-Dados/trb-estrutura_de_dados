@@ -8,7 +8,7 @@ def get_route_distance(origin, destination):
   load_dotenv()
 
   # Obter a chave de API
-  api_key = os.getenv('GOOGLE_API_URL')
+  api_key = 'AIzaSyASrRdd0pScL4yKmyBHl7vgiP2_LHo7vos'
 
   url = "https://maps.googleapis.com/maps/api/directions/json"
   params = {

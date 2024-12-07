@@ -5,9 +5,12 @@ from api import get_route_distance  # Importa a função para obter distância d
 from dotenv import load_dotenv  # Para carregar variáveis de ambiente de um arquivo .env
 
 # Caminhos dos arquivos JSON utilizados no processo
-CD_PATH = "path_to_distribution_centers.json"
-ALL_ROUTES_PATH = "path_to_all_routes.json"
-ORDER_PATH = "caminho/para/o/arquivo/order.json"
+ORDER_PATH='/home/guilhermedelrio/Workspace/trb-estrutura_de_dados/data/order.json'
+CD_PATH='/home/guilhermedelrio/Workspace/trb-estrutura_de_dados/data/distribution_center.json'
+ALL_ROUTES_PATH='/home/guilhermedelrio/Workspace/trb-estrutura_de_dados/data/all_routes.json'
+CLOSEST_ROUTES='/home/guilhermedelrio/Workspace/trb-estrutura_de_dados/data/closest_routes.json'
+TRUCKS_PATH='/home/guilhermedelrio/Workspace/trb-estrutura_de_dados/data/trucks.json'
+TRUCK_ALLOCATIONS_PATH='/home/guilhermedelrio/Workspace/trb-estrutura_de_dados/data/truck_allocations.json'
 
 # Função para ler dados de um arquivo JSON
 def get_json_data(path):
@@ -173,15 +176,5 @@ def main():
 
 # Código para carregar as variáveis de ambiente e executar o programa
 if __name__ == "__main__":
-    load_dotenv()  # Carrega as variáveis de ambiente do arquivo .env
-
-    # Lê os caminhos dos arquivos a partir das variáveis de ambiente
-    ORDER_PATH = os.getenv('ORDER_PATH')
-    CD_PATH = os.getenv('CD_PATH')
-    ALL_ROUTES_PATH = os.getenv('ALL_ROUTES_PATH')
-    CLOSEST_ROUTES = os.getenv('CLOSEST_ROUTES')
-    TRUCKS_PATH = os.getenv('TRUCKS_PATH')
-    TRUCK_ALLOCATIONS_PATH = os.getenv('TRUCK_ALLOCATIONS_PATH')
-
     # Executa a função principal
     main()
