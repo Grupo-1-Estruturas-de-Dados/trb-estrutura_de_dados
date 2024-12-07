@@ -1,4 +1,4 @@
-# Trabalho Estrutura de Dados - Grupo 1
+![image](https://github.com/user-attachments/assets/e98bd231-acfb-4bbd-88cf-8114430b9d95)# Trabalho Estrutura de Dados - Grupo 1
 ## Integrantes
 * Bruna Machado Gravina - 1252221676
 * Fabio Cunha de Abreu - 302210481
@@ -52,20 +52,17 @@ pip install python-dotenv
 pip install requests
 ```
 
-### 4. Configurando arquivo .env
-Na raiz do projeto, crie um arquivo chamado `.env` e  insira as seguintes variáveis:
+### 4. Configurando arquivos json no código
+Para rodar o projeto, no código Main.py, os caminhos de cada arquivo deve ser substituído no codigo, peço que copie o path de cada arquivo na pasta "Data" e subistitua no código, conforme print abaixo
 
-1. Key da api do GoogleMaps
-```
-GOOGLE_API_URL=xx
-```
+![image](https://github.com/user-attachments/assets/7026c9fa-b8ec-4530-a5b4-891d84f0c612)
 
-2. Caminhos para os arquivos JSON
+Para testar, sugiro que apague os dados do json de all_route, closest_routes e trucks_allocations para ver funcionando de fato, deixando somente o [], vazio.
+
+1. Caminhos para os arquivos JSON
 
 ```
 ORDER_PATH='substituir para caminho para o arquivo order.json dentro da pasta Data'
 CD_PATH='substituir caminho para o arquivo distribution_center.json dentro da pasta Data'
 ALL_ROUTES_PATH='substituir caminho para o arquivo all_routes.json dentro da pasta Data'
 ```
-
-**Nota:** A GOOGLE_API_URL precisa ser obtida com **Guilherme Del Rio** e substituída no campo indicado. Os caminhos de xxx_PATH devem ser ajustados conforme o local onde os arquivos order.json e distribution_center.json estão na pasta Data.
